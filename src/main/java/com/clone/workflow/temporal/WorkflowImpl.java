@@ -2,6 +2,7 @@ package com.clone.workflow.temporal;
 
 import java.time.Duration;
 
+import com.clone.workflow.domain.Od3cpRequestInfo;
 import io.temporal.activity.ActivityOptions;
 import io.temporal.common.RetryOptions;
 import io.temporal.workflow.Workflow;
@@ -22,9 +23,9 @@ public class WorkflowImpl implements WorkFlow {
 	public boolean isOrderDelivered = false;
 
 	@Override
-	public void startApprovalWorkflow(String source, String destination)  {
+	public void startApprovalWorkflow(Od3cpRequestInfo requestInfo)  {
 		
-		activity.placeOrder(source, destination);
+		activity.placeOrder(requestInfo.getSource(), requestInfo.getDestination());
 		
 		System.out.println("***** Waiting for Restaurant to confirm your order");
 		Workflow.await(() -> isOrderConfirmed);

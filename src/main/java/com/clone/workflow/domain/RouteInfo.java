@@ -19,7 +19,7 @@ public class RouteInfo {
 
     private String destination;
 
-    private List<String> routeList;
+    private List<RouteDTO> routeList;
 
 
 }

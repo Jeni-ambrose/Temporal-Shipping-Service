@@ -1,5 +1,6 @@
 package com.clone.workflow.service;
 
+import com.clone.workflow.domain.Od3cpRequestInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,10 +19,11 @@ public class OrderService {
 	@Autowired
 	WorkflowClient workflowClient;
 
-	public void placeOrder(String workflowId, String source, String destination) {
-		WorkFlow workflow = createWorkFlowConnection(workflowId);
+	public void placeOrder(Od3cpRequestInfo requestInfo) {
+
+		WorkFlow workflow = createWorkFlowConnection(requestInfo.getRequestId());
 		//WorkflowClient.start(workflow::startApprovalWorkflow);
-		WorkflowClient.start(workflow::startApprovalWorkflow,source,destination);
+		WorkflowClient.start(workflow::startApprovalWorkflow,requestInfo);
 	}
 
 	public void makeOrderAccepted(String workflowId) {

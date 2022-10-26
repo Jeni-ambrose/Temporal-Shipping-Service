@@ -1,6 +1,7 @@
 package com.clone.workflow.temporal;
 
 import com.clone.workflow.client.RouteInfoRestClient;
+import com.clone.workflow.domain.Od3cpRequestInfo;
 import lombok.extern.slf4j.Slf4j;
 import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class ActivityImpl implements Activity {
 
 		var routeInfoMono = routeInfoRestClient.retrieveRouteInfo(source, destination);
 
-		routeInfoMono.subscribe(name->{
+		 routeInfoMono.subscribe(name->{
 			System.out.println("Name is " + name);
 		});
 

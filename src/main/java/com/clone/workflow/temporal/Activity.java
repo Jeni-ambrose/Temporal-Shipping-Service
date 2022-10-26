@@ -1,5 +1,6 @@
 package com.clone.workflow.temporal;
 
+import com.clone.workflow.domain.Od3cpRequestInfo;
 import io.temporal.activity.ActivityInterface;
 import io.temporal.activity.ActivityMethod;
 
@@ -7,7 +8,7 @@ import io.temporal.activity.ActivityMethod;
 public interface Activity {
 
 	@ActivityMethod
-	void placeOrder(String source , String destination) ;
+	void placeOrder(String source, String destination) ;
 
 	@ActivityMethod
 	void setOrderAccepted();
